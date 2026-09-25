@@ -24,20 +24,10 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Work out the public site URL
-        env:
-          CUSTOM_URL: ${{ vars.SITE_URL }}
-        run: |
-          OWNER="${GITHUB_REPOSITORY_OWNER,,}"
-          REPO="${GITHUB_REPOSITORY#*/}"
-          if [ -n "$CUSTOM_URL" ]; then
-            echo "SITE_URL=$CUSTOM_URL" >> "$GITHUB_ENV"
-          elif [ "${REPO,,}" = "$OWNER.github.io" ]; then
-            echo "SITE_URL=https://$OWNER.github.io/" >> "$GITHUB_ENV"
-          else
-            echo "SITE_URL=https://$OWNER.github.io/$REPO/" >> "$GITHUB_ENV"
-          fi
       - run: npm run build
+        env:
+          SITE_URL: ${{ vars.SITE_URL || 'https://smadhavan.me/' }}
+      # Fails with "Get Pages site failed" until Pages is enabled once: Settings -> Pages -> Source: GitHub Actions.
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

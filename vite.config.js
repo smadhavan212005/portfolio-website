@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 
-// Public URL of the deployed site. The GitHub Actions workflow sets SITE_URL automatically;
-// change the fallback below (or set a repo variable named SITE_URL) if you use a custom domain.
-const SITE_URL = (process.env.SITE_URL || 'https://smadhavan212005.github.io/').replace(/\/?$/, '/');
+// Public URL of the deployed site (custom domain). Override with the SITE_URL environment variable if it changes.
+const SITE_URL = (process.env.SITE_URL || 'https://smadhavan.me/').replace(/\/?$/, '/');
 
 /** Fills the __SITE_URL__ placeholders in index.html and emits sitemap.xml + robots.txt for search engines. */
 const seo = () => ({
