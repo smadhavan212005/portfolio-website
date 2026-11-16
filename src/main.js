@@ -489,7 +489,7 @@ async function initAnimations() {
   animate('.portrait__ring', { rotate: 360, duration: 26000, loop: true, ease: 'linear' });
 
   const rot = $('#roleRotator');
-  const roles = ['RTL Design & Verification', 'Embedded Systems', 'Agentic AI for VLSI', 'Photographer'];
+  const roles = ['RTL Design & Verification', 'Embedded Systems', 'Signal Processing', 'Agentic AI for VLSI', 'Photographer'];
   let ri = 0;
   setInterval(() => {
     if (document.hidden) return;
